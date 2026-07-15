@@ -49,14 +49,14 @@ Ubuntu terminal through ttyd.
 ## Terminal login
 
 ```text
-Username: ubuntu
-Password: ubuntu
+Username: user
+Password: 1234
 ```
 
-The terminal starts in:
+When in terminal:
 
-```text
-/home/ubuntu
+```do
+cd ~
 ```
 
 The free Render service can sleep when idle and restart with an empty filesystem.
