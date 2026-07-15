@@ -16,6 +16,7 @@ RUN apt-get update \
         nginx \
         novnc \
         procps \
+        sudo \
         supervisor \
         ttyd \
         unzip \
@@ -31,7 +32,11 @@ RUN apt-get update \
 
 RUN id -u user >/dev/null 2>&1 || useradd -m -s /bin/bash user \
     && usermod -s /bin/bash user \
+    && usermod -aG sudo user \
     && echo 'user:1234' | chpasswd \
+    && echo 'root:1234' | chpasswd \
+    && printf '%s\n' 'user ALL=(ALL:ALL) ALL' > /etc/sudoers.d/user \
+    && chmod 440 /etc/sudoers.d/user \
     && mkdir -p \
         /workspace \
         /var/log/supervisor \
