@@ -29,9 +29,9 @@ RUN apt-get update \
         zip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -s /bin/bash ubuntu \
+RUN usermod -s /bin/bash ubuntu \
     && echo 'ubuntu:ubuntu' | chpasswd \
-    && mkdir -p /workspace /var/log/supervisor /run/nginx \
+    && mkdir -p /workspace /var/log/supervisor /run/nginx /home/ubuntu \
     && chown -R ubuntu:ubuntu /workspace /home/ubuntu
 
 RUN printf '%s\n' \
